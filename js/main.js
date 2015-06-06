@@ -23,6 +23,7 @@ $(function() {
 		if (data.number === 0) {
 			$button.removeData("countdown");
 			$button.addClass('disabled');
+			$button.prop('disabled', true);
 		}
 	});
 
@@ -31,9 +32,7 @@ $(function() {
 	// Event delegation
 	$("form").on("click", ".btns", function(event) {
 		event.preventDefault();
-
-		var $button = $(this);
-		
+		var $button = $(this);		
 		var numberElem = $button.find(".number");
 		var number = Number(numberElem.text()) - 1;
 
@@ -41,8 +40,8 @@ $(function() {
 
 		if (number === 0) {
 			$button.addClass('disabled');
+			$button.prop('disabled', true);
 		}
-
 	});
 
 	return;
@@ -64,6 +63,7 @@ $(function() {
 			if (number === 0) {
 				$button.off("click"); // unbind event handler
 				$button.addClass('disabled');
+				$button.prop('disabled', true);
 			}
 		});
 	});
@@ -84,7 +84,8 @@ $(function() {
 
 			if (number === 0) {
 				$button.addClass('disabled');
-				$button.off("click"); // unbind event handler
+				$button.prop('disabled', true);
+				$button.off("click"); // unbind event handler				
 			}
 		});
 	});
@@ -94,7 +95,6 @@ $(function() {
 	// Less efficient way
 	$(".btns").on("click", function(event) {
 		event.preventDefault();
-
 		var $button = $(this);
 		var numberElem = $button.find(".number");
 		var number = Number(numberElem.text()) - 1;
@@ -103,6 +103,7 @@ $(function() {
 
 		if (number === 0) {
 			$button.addClass('disabled');
+			$button.prop('disabled', true);
 			$button.off("click"); // unbind event handler
 		}
 	});
